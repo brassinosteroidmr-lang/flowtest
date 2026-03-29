@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "要求取消・戻入処理業務フロー（PSM-PA002）",
+    "title": "要求取消・戻入処理（PSM-PA002）",
     "version": "1.0",
     "lastUpdated": "2026-03-29"
   },
@@ -8,193 +8,87 @@
     { "id": "supplier", "label": "仕入先", "color": "#B0C4DE", "width": 140 },
     { "id": "kyumoto", "label": "要求元", "color": "#B2EBF2", "width": 140 },
     { "id": "shizai", "label": "資材課", "color": "#E8F4FD", "width": 150 },
-    { "id": "souko", "label": "倉庫", "color": "#E8F5E9", "width": 130 },
-    { "id": "maps", "label": "MAPS", "color": "#F3E5F5", "width": 140 }
+    { "id": "souko", "label": "倉庫", "color": "#E8F5E9", "width": 130 }
   ],
   "groups": [
-    { "id": "cancel_apply", "label": "要求取消：申請" },
-    { "id": "cancel_check", "label": "要求取消：状況確認" },
-    { "id": "cancel_process", "label": "要求取消：処理" },
-    { "id": "return_apply", "label": "戻入：申請" },
-    { "id": "return_check", "label": "戻入：確認・判断" },
-    { "id": "return_maps", "label": "戻入：MAPS登録" },
-    { "id": "return_complete", "label": "戻入：発送・完了" }
+    { "id": "cancel", "label": "要求取消" },
+    { "id": "return_proc", "label": "戻入処理" }
   ],
   "nodes": [
     {
-      "id": "n01", "label": "申請書記入", "lane": "kyumoto", "group": "cancel_apply",
+      "id": "n01", "label": "要求取消申請", "lane": "kyumoto", "group": "cancel",
       "x": 0, "y": 40,
-      "manual": "", "manualStatus": "", "system": "",
-      "note": "要求取消・戻入申請書を記入"
+      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
+      "note": "要求取消・戻入申請書を記入し上長承認を取得"
     },
     {
-      "id": "n02", "label": "上長承認", "lane": "kyumoto", "group": "cancel_apply",
+      "id": "n02", "label": "申請内容確認", "lane": "shizai", "group": "cancel",
       "x": 0, "y": 80,
-      "manual": "", "manualStatus": "", "system": "",
-      "note": "要求元上長の承認印を取得"
+      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
+      "note": "申請書受領・内容確認\nMAPS資材状況一覧で発注状況を確認し取消可否を判断"
     },
     {
-      "id": "n03", "label": "申請書受領", "lane": "shizai", "group": "cancel_apply",
+      "id": "n03", "label": "発注取消", "lane": "shizai", "group": "cancel",
       "x": 0, "y": 120,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
-      "note": "PDF受領可。紙の場合はPDF化しMAPS登録後に原紙廃棄"
+      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
+      "note": "発注済の場合：仕入先へキャンセル確認\n全体取消→発注取消処理 / 一部取消→差戻・改訂発注"
     },
     {
-      "id": "n04", "label": "申請内容確認", "lane": "shizai", "group": "cancel_apply",
+      "id": "n04", "label": "引当解除", "lane": "shizai", "group": "cancel",
+      "x": 150, "y": 120,
+      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
+      "note": "在庫引当の場合：出庫状況確認\n出庫待→出荷指示取消・引当解除 / 出荷済→取消不可"
+    },
+    {
+      "id": "n05", "label": "要求取消処理", "lane": "shizai", "group": "cancel",
       "x": 0, "y": 160,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
-      "note": "要求番号・取消対象・要求元部門・承認印・取消理由を確認\n不備がある場合は要求元へ差戻し"
+      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
+      "note": "要求画面で全体取消または行取消を実施\n申請書をMAPSに添付して保管"
     },
     {
-      "id": "n05", "label": "発注状況確認", "lane": "maps", "group": "cancel_check",
+      "id": "n06", "label": "戻入申請", "lane": "kyumoto", "group": "return_proc",
       "x": 0, "y": 260,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "MAPS資材状況一覧で要求番号を検索し発注状況を確認\n入荷済（仕入計上待）は取消不可"
+      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
+      "note": "戻入申請書を記入し上長承認を取得\n廃棄処分該当時は事業所長承認・決裁書も必要"
     },
     {
-      "id": "n06", "label": "出庫状況確認", "lane": "maps", "group": "cancel_check",
+      "id": "n07", "label": "戻入可否判断", "lane": "shizai", "group": "return_proc",
       "x": 0, "y": 300,
       "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "在庫引当の場合：出荷指示画面で出庫待／出荷済を確認\n出荷済の場合は取消不可→戻入検討"
+      "note": "申請内容確認・S140基準に基づく戻入可否判断\n現品確認（部品番号・数量・シリアル・成績書照合）\n棚番確認・設定"
     },
     {
-      "id": "n07", "label": "取消可否回答", "lane": "supplier", "group": "cancel_check",
-      "x": 0, "y": 300,
-      "manual": "", "manualStatus": "", "system": "",
-      "note": "発注済（入荷待）の場合：仕入先へキャンセル可否を確認\nキャンセル不可の場合は取消不可→戻入検討"
-    },
-    {
-      "id": "n08", "label": "引当解除", "lane": "maps", "group": "cancel_process",
-      "x": 0, "y": 400,
+      "id": "n08", "label": "戻入処理", "lane": "shizai", "group": "return_proc",
+      "x": 0, "y": 340,
       "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "出庫待の場合：出荷指示取消→在庫引当画面で引当解除"
+      "note": "MAPS戻入登録（入庫先倉庫・成績書・シリアル・数量）\n必要に応じて在庫分割・シリアル登録"
     },
     {
-      "id": "n09", "label": "発注取消", "lane": "maps", "group": "cancel_process",
-      "x": 150, "y": 400,
+      "id": "n09", "label": "審査・承認", "lane": "shizai", "group": "return_proc",
+      "x": 0, "y": 380,
       "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "注文書全体キャンセル：申請書添付→資材上長へ取消依頼\n一部キャンセル：発注差戻→行削除→見積改定→改訂発注"
+      "note": "資材審査者へ承認依頼\n資材上長承認後にMAPSへ反映"
     },
     {
-      "id": "n10", "label": "要求取消処理", "lane": "maps", "group": "cancel_process",
-      "x": 0, "y": 440,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "全体取消：要求画面で取消ボタン押下\n一部取消：行取消または行削除を実施"
-    },
-    {
-      "id": "n11", "label": "書類保管", "lane": "shizai", "group": "cancel_process",
-      "x": 0, "y": 480,
+      "id": "n10", "label": "棚入れ", "lane": "souko", "group": "return_proc",
+      "x": 0, "y": 420,
       "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
-      "note": "MAPSへ添付で保管。原紙保管は不要"
-    },
-    {
-      "id": "n12", "label": "戻入申請書記入", "lane": "kyumoto", "group": "return_apply",
-      "x": 0, "y": 580,
-      "manual": "", "manualStatus": "", "system": "",
-      "note": "要求取消・戻入申請書を記入"
-    },
-    {
-      "id": "n13", "label": "上長承認", "lane": "kyumoto", "group": "return_apply",
-      "x": 0, "y": 620,
-      "manual": "", "manualStatus": "", "system": "",
-      "note": "要求元上長承認。廃棄処分該当時は事業所長承認・決裁書も必要"
-    },
-    {
-      "id": "n14", "label": "申請書受領", "lane": "shizai", "group": "return_apply",
-      "x": 0, "y": 660,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
-      "note": "PDF受領可。処理完了まで資材課で管理"
-    },
-    {
-      "id": "n15", "label": "申請内容確認", "lane": "shizai", "group": "return_check",
-      "x": 0, "y": 760,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
-      "note": "要求番号・部品番号・数量・戻入理由・再発防止策・承認印を確認\n不備・承認印なしは差戻し"
-    },
-    {
-      "id": "n16", "label": "戻入可否判断", "lane": "shizai", "group": "return_check",
-      "x": 0, "y": 800,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "S140基準に基づき判断\n不可条件：2年間手配実績なし・専用品・物損汚損・使用済品等\n不可の場合は要求元へ通知し廃棄処分決裁書を作成"
-    },
-    {
-      "id": "n17", "label": "現品確認", "lane": "shizai", "group": "return_check",
-      "x": 0, "y": 840,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "MAPS情報と現品を照合（部品番号・数量・シリアル・成績書）\n傷・破損・腐食がある場合は戻入不可"
-    },
-    {
-      "id": "n18", "label": "棚番確認", "lane": "maps", "group": "return_check",
-      "x": 0, "y": 880,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "部品マスタで戻入予定倉庫の棚番を確認\n未設定の場合はPSM-PA_部品登録に従い棚番設定"
-    },
-    {
-      "id": "n19", "label": "戻入登録", "lane": "maps", "group": "return_maps",
-      "x": 0, "y": 980,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "入庫先倉庫・成績書有無・シリアル番号・数量を入力し登録\n申請書にデータ印押印後PDFを添付"
-    },
-    {
-      "id": "n20", "label": "承認依頼", "lane": "shizai", "group": "return_maps",
-      "x": 0, "y": 1020,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "資材審査者ロール保有者へ承認依頼を送信\n資材上長が承認後にMAPSへ反映"
-    },
-    {
-      "id": "n21", "label": "在庫分割", "lane": "maps", "group": "return_maps",
-      "x": 0, "y": 1060,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "MAPS",
-      "note": "シリアル番号が複数の場合：在庫照会で分割数量・分割単位を入力\n分割後に各行のシリアル番号を入力"
-    },
-    {
-      "id": "n22", "label": "戻入倉庫へ発送", "lane": "shizai", "group": "return_complete",
-      "x": 0, "y": 1160,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
-      "note": "外部倉庫の場合：KMS⇔NX連携手順に従い連絡・梱包・発送\n申請書（紙）を同梱し受領確認を取得"
-    },
-    {
-      "id": "n23", "label": "棚入れ", "lane": "souko", "group": "return_complete",
-      "x": 0, "y": 1200,
-      "manual": "", "manualStatus": "", "system": "",
-      "note": "現品ラベル印刷・貼付後に棚入れ\n手順はPSM-WH_借用・戻入業務による"
-    },
-    {
-      "id": "n24", "label": "書類保管", "lane": "shizai", "group": "return_complete",
-      "x": 0, "y": 1240,
-      "manual": "PSM-PA002", "manualStatus": "完了", "system": "",
-      "note": "申請書はMAPSに添付。原紙保管は不要"
+      "note": "外部倉庫の場合は梱包・発送・受領確認\n現品ラベル貼付後に棚入れ"
     }
   ],
   "edges": [
-    { "from": "n01", "to": "n02", "label": "" },
-    { "from": "n02", "to": "n03", "label": "申請書" },
-    { "from": "n03", "to": "n04", "label": "" },
+    { "from": "n01", "to": "n02", "label": "申請書" },
+    { "from": "n02", "to": "n03", "label": "発注済" },
+    { "from": "n02", "to": "n04", "label": "在庫引当" },
+    { "from": "n02", "to": "n05", "label": "手配待" },
+    { "from": "n03", "to": "n05", "label": "" },
     { "from": "n04", "to": "n05", "label": "" },
-    { "from": "n05", "to": "n06", "label": "在庫引当" },
-    { "from": "n05", "to": "n07", "label": "発注済" },
-    { "from": "n05", "to": "n10", "label": "手配待" },
-    { "from": "n06", "to": "n08", "label": "出庫待" },
-    { "from": "n06", "to": "n12", "label": "出荷済・取消不可" },
-    { "from": "n07", "to": "n09", "label": "キャンセル可" },
-    { "from": "n07", "to": "n12", "label": "キャンセル不可" },
-    { "from": "n08", "to": "n10", "label": "" },
-    { "from": "n09", "to": "n10", "label": "" },
-    { "from": "n10", "to": "n11", "label": "" },
-    { "from": "n12", "to": "n13", "label": "" },
-    { "from": "n13", "to": "n14", "label": "申請書" },
-    { "from": "n14", "to": "n15", "label": "" },
-    { "from": "n15", "to": "n16", "label": "" },
-    { "from": "n16", "to": "n17", "label": "戻入可" },
-    { "from": "n17", "to": "n18", "label": "" },
-    { "from": "n18", "to": "n19", "label": "" },
-    { "from": "n19", "to": "n20", "label": "" },
-    { "from": "n20", "to": "n21", "label": "分割必要時" },
-    { "from": "n20", "to": "n22", "label": "外部倉庫" },
-    { "from": "n20", "to": "n23", "label": "事業所内" },
-    { "from": "n21", "to": "n22", "label": "" },
-    { "from": "n22", "to": "n23", "label": "" },
-    { "from": "n23", "to": "n24", "label": "" }
+    { "from": "n02", "to": "n06", "label": "取消不可" },
+    { "from": "n03", "to": "n07", "label": "キャンセル不可" },
+    { "from": "n06", "to": "n07", "label": "申請書" },
+    { "from": "n07", "to": "n08", "label": "戻入可" },
+    { "from": "n08", "to": "n09", "label": "" },
+    { "from": "n09", "to": "n10", "label": "" }
   ],
   "manuals": [
     { "id": "PSM-PA002", "status": "完了" }
