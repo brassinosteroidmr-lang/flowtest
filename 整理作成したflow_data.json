@@ -1,0 +1,2090 @@
+{
+  "meta": {
+    "title": "資材課 全業務俯瞰フロー",
+    "version": "1.0",
+    "lastUpdated": "2026-03-30 19:21"
+  },
+  "lanes": [
+    {
+      "id": "supplier",
+      "label": "仕入先",
+      "color": "#B0C4DE",
+      "width": 160
+    },
+    {
+      "id": "shizai",
+      "label": "資材課",
+      "color": "#e8f4fd",
+      "width": 250
+    },
+    {
+      "id": "souko",
+      "label": "倉庫",
+      "color": "#e8f5e9",
+      "width": 200
+    },
+    {
+      "id": "service",
+      "label": "サービス本部",
+      "color": "#B2EBF2",
+      "width": 160
+    },
+    {
+      "id": "kikaku",
+      "label": "企画管理部",
+      "color": "#FFF9C4",
+      "width": 160
+    }
+  ],
+  "groups": [
+    {
+      "id": "quotation_order",
+      "label": "部品",
+      "color": ""
+    },
+    {
+      "id": "grp_mncuuwvz",
+      "label": "出荷",
+      "color": "#ffffff"
+    },
+    {
+      "id": "receiving",
+      "label": "入庫",
+      "color": ""
+    },
+    {
+      "id": "cancel_return",
+      "label": "部品要求取消・戻入",
+      "color": ""
+    },
+    {
+      "id": "inventory_ops",
+      "label": "在庫運用"
+    },
+    {
+      "id": "disposal",
+      "label": "在庫処分"
+    },
+    {
+      "id": "warehouse",
+      "label": "倉庫管理"
+    },
+    {
+      "id": "pricing",
+      "label": "部品売価"
+    },
+    {
+      "id": "grp_mncxy6qe",
+      "label": "作業",
+      "color": "#ffffff"
+    },
+    {
+      "id": "grp_mnd0cdew",
+      "label": "作業要求取消",
+      "color": "#ffffff"
+    },
+    {
+      "id": "work_oh",
+      "label": "OH・LTSA",
+      "color": ""
+    },
+    {
+      "id": "supplier_mgmt",
+      "label": "仕入先管理"
+    },
+    {
+      "id": "admin_monthly",
+      "label": "管理・月次業務"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "n01",
+      "label": "見積要求",
+      "lane": "service",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 40,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "サービス本部から見積要求を起票"
+    },
+    {
+      "id": "n02",
+      "label": "見積依頼",
+      "lane": "shizai",
+      "group": "quotation_order",
+      "x": 0.6410459337110979,
+      "y": 40,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "MAPS/hWAO",
+      "note": "MAPS/hWAOで仕入先へ見積依頼\nシステム外の場合もあり"
+    },
+    {
+      "id": "n03",
+      "label": "見積",
+      "lane": "supplier",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 40,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "hWAO",
+      "note": "仕入先が見積書を作成・提出\nhWAO/KHI経由または直接"
+    },
+    {
+      "id": "n04",
+      "label": "購買要求",
+      "lane": "service",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 645.572822988549,
+      "manual": "【PA】発注業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "サービス本部がMAPSで購買要求を起票"
+    },
+    {
+      "id": "n05",
+      "label": "発注",
+      "lane": "shizai",
+      "group": "quotation_order",
+      "x": 119.57019204482197,
+      "y": 647.4616082734033,
+      "manual": "【PA】発注業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "購買要求に基づき発注処理"
+    },
+    {
+      "id": "n06",
+      "label": "受注",
+      "lane": "supplier",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 646.3665048886822,
+      "manual": "【PA】発注業務",
+      "manualStatus": "作成中",
+      "system": "",
+      "note": "仕入先が注文を受け注文請書を発行"
+    },
+    {
+      "id": "n07",
+      "label": "納期管理",
+      "lane": "shizai",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 563.6635943091026,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "S140Q基準に基づく納期フォロー・督促\n長納期部品の進捗管理を含む"
+    },
+    {
+      "id": "n08",
+      "label": "部品登録依頼",
+      "lane": "service",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 202.97370093791,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "",
+      "note": "新規部品の見積要求（PN:99999）など"
+    },
+    {
+      "id": "n09",
+      "label": "P/N登録",
+      "lane": "shizai",
+      "group": "quotation_order",
+      "x": 101.31575959437669,
+      "y": 202.97370093791,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "見積依頼・承認後にP/N登録（申請・承認）\n通常部品・充電器・ECBの区分あり\nKHI側でのP/N登録・価格LT登録を含む"
+    },
+    {
+      "id": "n11",
+      "label": "出荷",
+      "lane": "supplier",
+      "group": "receiving",
+      "x": 0,
+      "y": 84.91183639873839,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "仕入先が部品を納品\n出荷登録を実施"
+    },
+    {
+      "id": "n12",
+      "label": "入荷・検品・入庫",
+      "lane": "souko",
+      "group": "receiving",
+      "x": 0,
+      "y": 84.91183639873839,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "受却・入荷・検品・入庫処理\nS547F基準に基づく受入検査\n検査成績書・シリアル番号確認"
+    },
+    {
+      "id": "n13",
+      "label": "出庫・出荷",
+      "lane": "souko",
+      "group": "grp_mncuuwvz",
+      "x": 1.2820918674221957,
+      "y": 198.50957611826811,
+      "manual": "【WH】出荷業務",
+      "manualStatus": "未着手",
+      "system": "",
+      "note": "在庫引当に基づく出庫・出荷処理\nS547F基準に基づく出荷作業"
+    },
+    {
+      "id": "n14",
+      "label": "検収",
+      "lane": "shizai",
+      "group": "receiving",
+      "x": 0,
+      "y": 216.21849377947194,
+      "manual": "【PA】検収業務",
+      "manualStatus": "完了",
+      "system": "MAPS",
+      "note": "入荷処理を実施"
+    },
+    {
+      "id": "n15",
+      "label": "借用依頼",
+      "lane": "service",
+      "group": "inventory_ops",
+      "x": 1.9231378011332936,
+      "y": 400.76545632973557,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "サービス本部から借用依頼を提出"
+    },
+    {
+      "id": "n16",
+      "label": "借用処理",
+      "lane": "shizai",
+      "group": "inventory_ops",
+      "x": 0,
+      "y": 460.38272816486756,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "借用依頼に基づく処理\n借用品の管理・返却期限管理"
+    },
+    {
+      "id": "n17",
+      "label": "借用出荷",
+      "lane": "souko",
+      "group": "inventory_ops",
+      "x": 5.128367469688783,
+      "y": 471.3779796764702,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "借用品の出荷処理"
+    },
+    {
+      "id": "n18",
+      "label": "在庫移動処理",
+      "lane": "shizai",
+      "group": "inventory_ops",
+      "x": 0,
+      "y": 687.4649212197232,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "倉庫間の在庫移動処理\n指サ店倉庫（日銀在庫）との移動を含む"
+    },
+    {
+      "id": "n19",
+      "label": "在庫移動",
+      "lane": "souko",
+      "group": "inventory_ops",
+      "x": 0,
+      "y": 685.4882009201469,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "倉庫側の在庫移動作業\n現品の移動・配置変更"
+    },
+    {
+      "id": "n20",
+      "label": "棚卸処理",
+      "lane": "shizai",
+      "group": "inventory_ops",
+      "x": 0,
+      "y": 774.5116996891466,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "S545D基準に基づく循環棚卸\nスケジュール作成・2名体制での実査\n棚卸更正益損の処理・MAPSへの反映"
+    },
+    {
+      "id": "n21",
+      "label": "棚卸",
+      "lane": "souko",
+      "group": "inventory_ops",
+      "x": 0,
+      "y": 772.4913502588092,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "倉庫側の棚卸実査作業\nハンディターミナルによるカウント"
+    },
+    {
+      "id": "n22",
+      "label": "保管期限管理",
+      "lane": "shizai",
+      "group": "inventory_ops",
+      "x": 0,
+      "y": 900.3007104422627,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "S143F基準に基づく保管期限管理\n合成ゴム3年・電気部品5年等の期限設定\n先入れ先出し(FIFO)管理\n期限切れ部品の廃却判定"
+    },
+    {
+      "id": "n23",
+      "label": "戻入申請",
+      "lane": "service",
+      "group": "cancel_return",
+      "x": 0,
+      "y": 1049.7735369120592,
+      "manual": "【PA】要求取消・戻入処理",
+      "manualStatus": "完了",
+      "system": "",
+      "note": "要求取消・戻入申請書を記入し上長承認を取得\n廃棄処分時は事業所長承認・決裁書も必要"
+    },
+    {
+      "id": "n24",
+      "label": "戻入処理",
+      "lane": "shizai",
+      "group": "cancel_return",
+      "x": 0,
+      "y": 1052.8426036168971,
+      "manual": "【PA】要求取消・戻入処理",
+      "manualStatus": "完了",
+      "system": "MAPS",
+      "note": "S140Q基準に基づく戻入可否判断\n現品確認（部品番号・数量・シリアル照合）\nMAPS戻入登録・審査承認"
+    },
+    {
+      "id": "n25",
+      "label": "要求取消申請",
+      "lane": "service",
+      "group": "cancel_return",
+      "x": 0,
+      "y": 820,
+      "manual": "【PA】要求取消・戻入処理",
+      "manualStatus": "完了",
+      "system": "",
+      "note": "サービス本部から要求取消申請を提出"
+    },
+    {
+      "id": "n26",
+      "label": "審査・引当解除",
+      "lane": "shizai",
+      "group": "cancel_return",
+      "x": 0,
+      "y": 820,
+      "manual": "【PA】要求取消・戻入処理",
+      "manualStatus": "完了",
+      "system": "MAPS",
+      "note": "発注済→仕入先へキャンセル確認・発注取消\n在庫引当→出荷指示取消・引当解除\n要求画面で取消処理を実施"
+    },
+    {
+      "id": "n27",
+      "label": "廃却部品選定",
+      "lane": "shizai",
+      "group": "disposal",
+      "x": 0,
+      "y": 940,
+      "manual": "【PA】在庫処分",
+      "manualStatus": "完了",
+      "system": "MAPS",
+      "note": "S544G基準に基づく在庫分析\n滞留在庫（2年以上未使用）・過大在庫を抽出\nS143基準の保管期限超過品を含む\nMAPSデータ・月報・前年度データを統合しリスト化"
+    },
+    {
+      "id": "n28",
+      "label": "協議",
+      "lane": "kikaku",
+      "group": "disposal",
+      "x": 0,
+      "y": 940,
+      "manual": "【PA】在庫処分",
+      "manualStatus": "完了",
+      "system": "",
+      "note": "事業所・企画管理部へ候補リスト送付\n需要ヒアリング・年央報告\n異議がある場合は協議しリスト修正"
+    },
+    {
+      "id": "n29",
+      "label": "決裁・承認",
+      "lane": "kikaku",
+      "group": "disposal",
+      "x": 0,
+      "y": 1091.5409579054635,
+      "manual": "【PA】在庫処分",
+      "manualStatus": "完了",
+      "system": "",
+      "note": "決裁書作成・主管部門確認\n決裁基準に従い申請・承認"
+    },
+    {
+      "id": "n30",
+      "label": "廃却処理",
+      "lane": "shizai",
+      "group": "disposal",
+      "x": 0,
+      "y": 1094.4422669906717,
+      "manual": "【PA】在庫処分",
+      "manualStatus": "完了",
+      "system": "MAPS",
+      "note": "通常倉庫→廃棄倉庫への在庫移動\n産廃業者への見積要求・発注\n棚卸資産廃却依頼書を企画管理部へ提出"
+    },
+    {
+      "id": "n31",
+      "label": "廃却実施",
+      "lane": "souko",
+      "group": "disposal",
+      "x": 0.7936819001332651,
+      "y": 1214.795641608528,
+      "manual": "【PA】在庫処分",
+      "manualStatus": "完了",
+      "system": "",
+      "note": "積込立会い・写真撮影\n廃却部品受領書回収"
+    },
+    {
+      "id": "n33",
+      "label": "倉庫備品管理",
+      "lane": "souko",
+      "group": "warehouse",
+      "x": 0,
+      "y": 1140,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "倉庫備品の発注・管理\nシステム外の発注もあり"
+    },
+    {
+      "id": "n34",
+      "label": "倉庫環境管理",
+      "lane": "souko",
+      "group": "warehouse",
+      "x": 0,
+      "y": 1281.4313710119936,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "倉庫の温度・湿度・清潔度等の環境管理\n保管品質の維持"
+    },
+    {
+      "id": "n35",
+      "label": "棚番・収納管理",
+      "lane": "souko",
+      "group": "warehouse",
+      "x": 0,
+      "y": 1227.4610018029316,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "S546E基準に基づく棚番設定・ラベル貼付\n部品ロケーション管理\n2BOXセット部品管理を含む"
+    },
+    {
+      "id": "n36",
+      "label": "売価設定(年度)",
+      "lane": "shizai",
+      "group": "pricing",
+      "x": 11.538826806799818,
+      "y": 1300,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "各種マスタ・実績の収集・集計\nSET/KIT構成登録・更新\n売価の再計算・原価の決裁書作成\nMAPS価格登録（KHI協定・指サ店・エンドユーザ）"
+    },
+    {
+      "id": "n37",
+      "label": "売価反映",
+      "lane": "service",
+      "group": "pricing",
+      "x": 0,
+      "y": 1300,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "特別売価の設定（昨年度引継含む）\n影響額の試算・売価計算\n指サ店部品販売価格表の掲載部品決定・価格表作成"
+    },
+    {
+      "id": "n38",
+      "label": "協定価格改定",
+      "lane": "supplier",
+      "group": "pricing",
+      "x": 0,
+      "y": 1300,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "KHI協定部品リスト（案）作成\n協定価格改定・締結（6月〜9月）\nKHI交渉・締結（3月）"
+    },
+    {
+      "id": "n39",
+      "label": "売価設定(都度)",
+      "lane": "shizai",
+      "group": "pricing",
+      "x": 0,
+      "y": 1416.8531947346291,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "協定なし・現仕入価格適用日到来時\n見積依頼・内容精査・協議\n規定掛率による売価計算\nS507基準の承認フローで価格登録"
+    },
+    {
+      "id": "n41",
+      "label": "作業完了登録",
+      "lane": "supplier",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 514.0748341855219,
+      "manual": "【SC】検収業務",
+      "manualStatus": "作成中",
+      "system": "hWAO",
+      "note": "仕入先が作業完了登録\nhWAOまたはシステム外で対応"
+    },
+    {
+      "id": "n43",
+      "label": "仕切見積確認",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 0,
+      "y": 1677.5061193091326,
+      "manual": "",
+      "manualStatus": "",
+      "system": "W-WIN",
+      "note": ""
+    },
+    {
+      "id": "n44",
+      "label": "LTSA",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 0,
+      "y": 1970.843670084237,
+      "manual": "",
+      "manualStatus": "",
+      "system": "GRANDIT",
+      "note": "審査・支払計画表作成\n決裁・KHI契約書作成・締結\nGRANDIT請求内容確認・支払申請\n会計伝票ファイル管理"
+    },
+    {
+      "id": "n45",
+      "label": "仕入先管理",
+      "lane": "shizai",
+      "group": "supplier_mgmt",
+      "x": 0,
+      "y": 1670,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "(BCP)取引先一覧表の更新\n安全衛生要網送付先住所録作成\n下請法調査（公取/中企庁）\n部品購買リスト（認定仕入先）更新\nCSR委員会（下請法）報告\n基本契約未締結仕入先棚卸調査\n契約書締結状況一覧更新"
+    },
+    {
+      "id": "n46",
+      "label": "新規仕入先選定",
+      "lane": "shizai",
+      "group": "supplier_mgmt",
+      "x": 0,
+      "y": 1805.512678464022,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "S140Q基準に基づく新規仕入先選定\n紹介・契約希望の受付\n新規仕入先候補の評価"
+    },
+    {
+      "id": "n47",
+      "label": "仕入先調査",
+      "lane": "supplier",
+      "group": "supplier_mgmt",
+      "x": 0,
+      "y": 1849.103801956377,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "仕入先への調査実施\n品質・納期・コスト等の評価"
+    },
+    {
+      "id": "n48",
+      "label": "不適合処置",
+      "lane": "shizai",
+      "group": "supplier_mgmt",
+      "x": 0,
+      "y": 1955.5404096362658,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "不適合事象の把握\n調査依頼書兼回答書作成指示\n是正対策の評価・承認\n対策の実効性の評価\n品質管理課との連携を含む"
+    },
+    {
+      "id": "n49",
+      "label": "アクセス管理",
+      "lane": "shizai",
+      "group": "admin_monthly",
+      "x": 0,
+      "y": 1870,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "S532J基準に基づくMAPSアクセス管理\nロール管理（資材担当者・発注決裁者・\n部品登録申請者・仕入計上等）\nユーザ権限の設定・変更・削除"
+    },
+    {
+      "id": "n50",
+      "label": "月次集計",
+      "lane": "shizai",
+      "group": "admin_monthly",
+      "x": 0,
+      "y": 1910,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "施工仕入-売上フォローデータ更新\n1・3Y部品出庫データ\nW/O別の部品購入金額\n部品仕入価格マスタ更新\nAPデータフォロー：新規協力業者発注実績\nネゴツールの更新\nKHI委託費用業務費処理\n注文書発行遅延調査\n市場価格表更新"
+    },
+    {
+      "id": "n100",
+      "label": "見積承認",
+      "lane": "shizai",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 359.75836580710364,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "hWAO",
+      "note": "見積内容を審査し承認\nシステム外の場合もあり"
+    },
+    {
+      "id": "n101",
+      "label": "見積回答",
+      "lane": "shizai",
+      "group": "quotation_order",
+      "x": 139.16107239164182,
+      "y": 462.7583658071037,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "見積内容をMAPSに登録"
+    },
+    {
+      "id": "n102",
+      "label": "見積回答",
+      "lane": "service",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 462.7583658071037,
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "見積内容をMAPSに登録"
+    },
+    {
+      "id": "n103",
+      "label": "在庫引当",
+      "lane": "shizai",
+      "group": "quotation_order",
+      "x": 0,
+      "y": 781.9074627941459,
+      "manual": "【PA】発注業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "購買要求にもとづき在庫引当"
+    },
+    {
+      "id": "n104",
+      "x": 0,
+      "y": 198.50957611826811,
+      "label": "納品",
+      "lane": "service",
+      "group": "grp_mncuuwvz",
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n105",
+      "x": 0,
+      "y": 216.04020386842706,
+      "label": "出荷登録",
+      "lane": "supplier",
+      "group": "receiving",
+      "manual": "【PA】検収業務",
+      "manualStatus": "完了",
+      "system": "hWAO",
+      "note": ""
+    },
+    {
+      "id": "n107",
+      "x": 141.03010541644244,
+      "y": 215.8064516128951,
+      "label": "仕入計上",
+      "lane": "shizai",
+      "group": "receiving",
+      "manual": "",
+      "manualStatus": "",
+      "system": "GRANDIT",
+      "note": ""
+    },
+    {
+      "id": "n109",
+      "x": 0,
+      "y": 153.217702364739,
+      "label": "納品",
+      "lane": "service",
+      "group": "receiving",
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n110",
+      "x": 0,
+      "y": 307.6133780746453,
+      "label": "受即納品",
+      "lane": "souko",
+      "group": "grp_mncuuwvz",
+      "manual": "【WH】出荷業務",
+      "manualStatus": "未着手",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n111",
+      "x": 0,
+      "y": 820,
+      "label": "発注取消",
+      "lane": "supplier",
+      "group": "cancel_return",
+      "manual": "【PA】要求取消・戻入処理",
+      "manualStatus": "完了",
+      "system": "hWAO",
+      "note": ""
+    },
+    {
+      "id": "n112",
+      "x": 0,
+      "y": 1124.249775102726,
+      "label": "戻入処理",
+      "lane": "souko",
+      "group": "cancel_return",
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS/倉庫アプリ",
+      "note": ""
+    },
+    {
+      "id": "n113",
+      "x": 0,
+      "y": 472.08961065391054,
+      "label": "納品",
+      "lane": "service",
+      "group": "inventory_ops",
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n116",
+      "x": 0,
+      "y": 551.0833210314681,
+      "label": "納品借用返却",
+      "lane": "souko",
+      "group": "inventory_ops",
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n117",
+      "x": 121.27341851532498,
+      "y": 606.4811418357324,
+      "label": "購買処理",
+      "lane": "shizai",
+      "group": "inventory_ops",
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": ""
+    },
+    {
+      "id": "n118",
+      "x": 0,
+      "y": 1140,
+      "label": "発注",
+      "lane": "shizai",
+      "group": "warehouse",
+      "manual": "【PA】発注業務",
+      "manualStatus": "作成中",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n119",
+      "x": 0,
+      "y": 1194.406757074547,
+      "label": "廃却手続き",
+      "lane": "kikaku",
+      "group": "disposal",
+      "manual": "【PA】在庫処分",
+      "manualStatus": "完了",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n120",
+      "x": 57.14509680959476,
+      "y": 202.97370093791,
+      "label": "価格LT回答",
+      "lane": "supplier",
+      "group": "quotation_order",
+      "manual": "【PA】見積業務",
+      "manualStatus": "作成中",
+      "system": "KHI",
+      "note": ""
+    },
+    {
+      "id": "n125",
+      "label": "見積",
+      "lane": "supplier",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 55.415916456606965,
+      "manual": "【SC】見積業務",
+      "manualStatus": "未着手",
+      "system": "hWAO",
+      "note": "仕入先が見積書を作成・提出\nhWAO経由または直接"
+    },
+    {
+      "id": "n126",
+      "label": "見積承認",
+      "lane": "shizai",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 179.25032151859682,
+      "manual": "【SC】見積業務",
+      "manualStatus": "未着手",
+      "system": "hWAO",
+      "note": "見積内容を審査し承認\nシステム外の場合もあり"
+    },
+    {
+      "id": "n127",
+      "label": "見積回答",
+      "lane": "service",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 145.60105318814135,
+      "manual": "【SC】見積業務",
+      "manualStatus": "未着手",
+      "system": "MAPS",
+      "note": "見積内容をMAPSに登録"
+    },
+    {
+      "id": "n128",
+      "label": "見積回答",
+      "lane": "shizai",
+      "group": "grp_mncxy6qe",
+      "x": 117.7143886002367,
+      "y": 250.03754683493412,
+      "manual": "【SC】見積業務",
+      "manualStatus": "未着手",
+      "system": "MAPS",
+      "note": "見積内容をMAPSに登録"
+    },
+    {
+      "id": "n130",
+      "label": "受注",
+      "lane": "supplier",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 371.2503215185968,
+      "manual": "【SC】発注業務",
+      "manualStatus": "作成中",
+      "system": "",
+      "note": "仕入先が注文を受け注文請書を発行"
+    },
+    {
+      "id": "n131",
+      "label": "発注",
+      "lane": "shizai",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 371.2503215185968,
+      "manual": "【SC】発注業務",
+      "manualStatus": "作成中",
+      "system": "MAPS/hWAO",
+      "note": "購買要求に基づき発注処理"
+    },
+    {
+      "id": "n132",
+      "label": "購買要求",
+      "lane": "service",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 371.2503215185968,
+      "manual": "【SC】発注業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": "サービス本部がMAPSで購買要求を起票"
+    },
+    {
+      "id": "n133",
+      "label": "見積要求",
+      "lane": "service",
+      "group": "grp_mncxy6qe",
+      "x": 0,
+      "y": 56.45763670970655,
+      "manual": "【SC】見積業務",
+      "manualStatus": "未着手",
+      "system": "MAPS",
+      "note": "サービス本部から見積要求を起票"
+    },
+    {
+      "id": "n134",
+      "label": "見積依頼",
+      "lane": "shizai",
+      "group": "grp_mncxy6qe",
+      "x": 30.641045933711098,
+      "y": 56.45763670970655,
+      "manual": "【SC】見積業務",
+      "manualStatus": "未着手",
+      "system": "MAPS/hWAO",
+      "note": "MAPS/hWAOで仕入先へ見積依頼\nシステム外の場合もあり"
+    },
+    {
+      "id": "n135",
+      "x": 0,
+      "y": 514.8598025480924,
+      "label": "検収",
+      "lane": "shizai",
+      "group": "grp_mncxy6qe",
+      "manual": "【SC】検収業務",
+      "manualStatus": "作成中",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n136",
+      "x": 0,
+      "y": 512.7763620418925,
+      "label": "完了承認",
+      "lane": "service",
+      "group": "grp_mncxy6qe",
+      "manual": "【SC】検収業務",
+      "manualStatus": "作成中",
+      "system": "MAPS",
+      "note": ""
+    },
+    {
+      "id": "n137",
+      "x": 0,
+      "y": 564.8598025480924,
+      "label": "仕入計上",
+      "lane": "shizai",
+      "group": "grp_mncxy6qe",
+      "manual": "",
+      "manualStatus": "",
+      "system": "GRANDIT",
+      "note": ""
+    },
+    {
+      "id": "n138",
+      "x": 30,
+      "y": 850,
+      "label": "発注取消",
+      "lane": "supplier",
+      "group": "grp_mnd0cdew",
+      "manual": "【SC】要求取消",
+      "manualStatus": "未着手",
+      "system": "hWAO",
+      "note": ""
+    },
+    {
+      "id": "n139",
+      "label": "審査",
+      "lane": "shizai",
+      "group": "grp_mnd0cdew",
+      "x": 30,
+      "y": 850,
+      "manual": "【SC】要求取消",
+      "manualStatus": "未着手",
+      "system": "MAPS",
+      "note": "発注済→仕入先へキャンセル確認・発注取消\n要求画面で取消処理を実施"
+    },
+    {
+      "id": "n140",
+      "label": "要求取消申請",
+      "lane": "service",
+      "group": "grp_mnd0cdew",
+      "x": 30,
+      "y": 850,
+      "manual": "【SC】要求取消",
+      "manualStatus": "未着手",
+      "system": "",
+      "note": "サービス本部から要求取消申請を提出"
+    },
+    {
+      "id": "n141",
+      "x": 0,
+      "y": 1361.0696004215088,
+      "label": "輸送依頼",
+      "lane": "service",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "W-WIN",
+      "note": ""
+    },
+    {
+      "id": "n144",
+      "label": "輸送月次発注",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 0,
+      "y": 1360.8017997437496,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": ""
+    },
+    {
+      "id": "n145",
+      "label": "発注",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 10.417202530994388,
+      "y": 1427.26200860223,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "見積同時発注"
+    },
+    {
+      "id": "n146",
+      "label": "依頼審査・承認",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 117.50450126035298,
+      "y": 1469.972538979307,
+      "manual": "",
+      "manualStatus": "",
+      "system": "W-WIN",
+      "note": ""
+    },
+    {
+      "id": "n147",
+      "x": 0,
+      "y": 1520.2202883491304,
+      "label": "受注",
+      "lane": "supplier",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "システム外",
+      "note": "検収は月次発注に基づく"
+    },
+    {
+      "id": "n148",
+      "x": 0,
+      "y": 1512.7827281881905,
+      "label": "発注",
+      "lane": "shizai",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "システム外",
+      "note": ""
+    },
+    {
+      "id": "n149",
+      "x": 0,
+      "y": 1610.8725738254907,
+      "label": "整備依頼",
+      "lane": "service",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "W-WIN",
+      "note": ""
+    },
+    {
+      "id": "n150",
+      "x": 0,
+      "y": 1614.0394800787196,
+      "label": "整備依頼承認",
+      "lane": "supplier",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "W-WIN",
+      "note": ""
+    },
+    {
+      "id": "n151",
+      "x": 0,
+      "y": 1677.3745281779018,
+      "label": "請求登録",
+      "lane": "supplier",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "W-WIN",
+      "note": ""
+    },
+    {
+      "id": "n154",
+      "x": 0,
+      "y": 1758.4188205797743,
+      "label": "発注",
+      "lane": "shizai",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": ""
+    },
+    {
+      "id": "n155",
+      "x": 0,
+      "y": 1758.4110346606037,
+      "label": "注文書受領",
+      "lane": "supplier",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "KHI",
+      "note": ""
+    },
+    {
+      "id": "n156",
+      "x": 0,
+      "y": 1834.246725796979,
+      "label": "完了書類作成",
+      "lane": "supplier",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "KHI",
+      "note": ""
+    },
+    {
+      "id": "n157",
+      "x": 0,
+      "y": 1833.4148928837633,
+      "label": "完了確認",
+      "lane": "shizai",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n158",
+      "x": 0,
+      "y": 1831.3314523775646,
+      "label": "完了承認",
+      "lane": "service",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": ""
+    },
+    {
+      "id": "n159",
+      "x": 0,
+      "y": 1896.9598283228295,
+      "label": "仕入計上",
+      "lane": "shizai",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "GRANDIT",
+      "note": ""
+    },
+    {
+      "id": "n160",
+      "x": 138.33890632234176,
+      "y": 1894.6665004767467,
+      "label": "検収",
+      "lane": "shizai",
+      "group": "work_oh",
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": ""
+    }
+  ],
+  "edges": [
+    {
+      "from": "n01",
+      "to": "n02",
+      "label": ""
+    },
+    {
+      "from": "n03",
+      "to": "n02",
+      "label": ""
+    },
+    {
+      "from": "n04",
+      "to": "n05",
+      "label": ""
+    },
+    {
+      "from": "n05",
+      "to": "n06",
+      "label": "発注"
+    },
+    {
+      "from": "n05",
+      "to": "n07",
+      "label": "",
+      "fromSide": "top"
+    },
+    {
+      "from": "n08",
+      "to": "n09",
+      "label": "登録依頼"
+    },
+    {
+      "from": "n06",
+      "to": "n11",
+      "label": "出荷"
+    },
+    {
+      "from": "n11",
+      "to": "n12",
+      "label": "",
+      "lineStyle": "dashed"
+    },
+    {
+      "from": "n103",
+      "to": "n13",
+      "label": "出荷指示",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n15",
+      "to": "n16",
+      "label": "借用依頼",
+      "toSide": "top"
+    },
+    {
+      "from": "n16",
+      "to": "n17",
+      "label": ""
+    },
+    {
+      "from": "n18",
+      "to": "n19",
+      "label": ""
+    },
+    {
+      "from": "n20",
+      "to": "n21",
+      "label": ""
+    },
+    {
+      "from": "n23",
+      "to": "n24",
+      "label": "申請書"
+    },
+    {
+      "from": "n25",
+      "to": "n26",
+      "label": "申請書"
+    },
+    {
+      "from": "n26",
+      "to": "n23",
+      "label": "取消不可",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "lineStyle": "dotted"
+    },
+    {
+      "from": "n22",
+      "to": "n27",
+      "label": "期限超過"
+    },
+    {
+      "from": "n27",
+      "to": "n28",
+      "label": "候補リスト"
+    },
+    {
+      "from": "n28",
+      "to": "n29",
+      "label": "合意",
+      "fromSide": "right",
+      "toSide": "right"
+    },
+    {
+      "from": "n29",
+      "to": "n30",
+      "label": ""
+    },
+    {
+      "from": "n30",
+      "to": "n31",
+      "label": "",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n38",
+      "to": "n36",
+      "label": "協定価格"
+    },
+    {
+      "from": "n36",
+      "to": "n37",
+      "label": "売価計算結果"
+    },
+    {
+      "from": "n46",
+      "to": "n47",
+      "label": "調査依頼"
+    },
+    {
+      "from": "n48",
+      "to": "n47",
+      "label": "調査依頼"
+    },
+    {
+      "from": "n03",
+      "to": "n100",
+      "label": "",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "from": "n100",
+      "to": "n101",
+      "label": "",
+      "toSide": "top"
+    },
+    {
+      "from": "n101",
+      "to": "n102",
+      "label": ""
+    },
+    {
+      "from": "n01",
+      "to": "n08",
+      "label": "",
+      "lineStyle": "dotted"
+    },
+    {
+      "from": "n09",
+      "to": "n02",
+      "label": "",
+      "toSide": "bottom",
+      "fromSide": "top"
+    },
+    {
+      "from": "n04",
+      "to": "n103",
+      "label": "",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n13",
+      "to": "n104",
+      "label": "",
+      "lineStyle": "dashed"
+    },
+    {
+      "from": "n11",
+      "to": "n105",
+      "label": ""
+    },
+    {
+      "from": "n105",
+      "to": "n14",
+      "label": ""
+    },
+    {
+      "from": "n14",
+      "to": "n107",
+      "label": ""
+    },
+    {
+      "from": "n11",
+      "to": "n109",
+      "label": "",
+      "lineStyle": "dashed"
+    },
+    {
+      "from": "n11",
+      "to": "n110",
+      "label": "",
+      "lineStyle": "dashed"
+    },
+    {
+      "from": "n110",
+      "to": "n104",
+      "label": "",
+      "toSide": "bottom",
+      "lineStyle": "dashed"
+    },
+    {
+      "from": "n26",
+      "to": "n111",
+      "label": ""
+    },
+    {
+      "from": "n24",
+      "to": "n112",
+      "label": "",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n17",
+      "to": "n113",
+      "label": ""
+    },
+    {
+      "from": "n113",
+      "to": "n116",
+      "label": "不使用の場合",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n113",
+      "to": "n117",
+      "label": "使用の場合",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n33",
+      "to": "n118",
+      "label": ""
+    },
+    {
+      "from": "n118",
+      "to": "n05",
+      "label": "",
+      "fromSide": "left",
+      "lineStyle": "dotted"
+    },
+    {
+      "from": "n31",
+      "to": "n119",
+      "label": ""
+    },
+    {
+      "from": "n09",
+      "to": "n120",
+      "label": ""
+    },
+    {
+      "from": "n120",
+      "to": "n09",
+      "label": ""
+    },
+    {
+      "from": "n133",
+      "to": "n134",
+      "label": ""
+    },
+    {
+      "from": "n134",
+      "to": "n125",
+      "label": ""
+    },
+    {
+      "from": "n125",
+      "to": "n126",
+      "label": ""
+    },
+    {
+      "from": "n126",
+      "to": "n128",
+      "label": ""
+    },
+    {
+      "from": "n128",
+      "to": "n127",
+      "label": ""
+    },
+    {
+      "from": "n132",
+      "to": "n131",
+      "label": ""
+    },
+    {
+      "from": "n131",
+      "to": "n130",
+      "label": ""
+    },
+    {
+      "from": "n130",
+      "to": "n41",
+      "label": ""
+    },
+    {
+      "from": "n41",
+      "to": "n135",
+      "label": ""
+    },
+    {
+      "from": "n135",
+      "to": "n136",
+      "label": ""
+    },
+    {
+      "from": "n136",
+      "to": "n137",
+      "label": "",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n140",
+      "to": "n139",
+      "label": ""
+    },
+    {
+      "from": "n139",
+      "to": "n138",
+      "label": ""
+    },
+    {
+      "from": "n141",
+      "to": "n144",
+      "label": ""
+    },
+    {
+      "from": "n144",
+      "to": "n145",
+      "label": ""
+    },
+    {
+      "from": "n145",
+      "to": "n131",
+      "label": "",
+      "fromSide": "left",
+      "lineStyle": "dotted"
+    },
+    {
+      "from": "n141",
+      "to": "n146",
+      "label": ""
+    },
+    {
+      "from": "n146",
+      "to": "n148",
+      "label": ""
+    },
+    {
+      "from": "n148",
+      "to": "n147",
+      "label": ""
+    },
+    {
+      "from": "n149",
+      "to": "n150",
+      "label": ""
+    },
+    {
+      "from": "n150",
+      "to": "n151",
+      "label": ""
+    },
+    {
+      "from": "n151",
+      "to": "n43",
+      "label": ""
+    },
+    {
+      "from": "n43",
+      "to": "n154",
+      "label": ""
+    },
+    {
+      "from": "n154",
+      "to": "n155",
+      "label": ""
+    },
+    {
+      "from": "n155",
+      "to": "n156",
+      "label": ""
+    },
+    {
+      "from": "n156",
+      "to": "n157",
+      "label": ""
+    },
+    {
+      "from": "n157",
+      "to": "n158",
+      "label": ""
+    },
+    {
+      "from": "n158",
+      "to": "n160",
+      "label": "",
+      "fromSide": "bottom"
+    },
+    {
+      "from": "n160",
+      "to": "n159",
+      "label": ""
+    }
+  ],
+  "manuals": [
+    {
+      "id": "PSM-PA001",
+      "status": "完了"
+    },
+    {
+      "id": "PSM-PA002",
+      "status": "完了"
+    },
+    {
+      "id": "PSM-WH001",
+      "status": "完了",
+      "taskName": "PSM-WH001_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_総則",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH002",
+      "status": "完了",
+      "taskName": "PSM-WH002_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_倉庫設備と保管環境",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH003",
+      "status": "完了",
+      "taskName": "PSM-WH003_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_入庫業務",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH004",
+      "status": "完了",
+      "taskName": "PSM-WH004_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_出荷業務",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH006",
+      "status": "完了",
+      "taskName": "PSM-WH006_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_2BOXセット部品管理",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH007",
+      "status": "完了",
+      "taskName": "PSM-WH007_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_棚卸業務",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH008",
+      "status": "完了",
+      "taskName": "PSM-WH008_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_借用・戻入",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH009",
+      "status": "完了",
+      "taskName": "PSM-WH009_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_在庫移動",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "【PA】発注業務",
+      "status": "作成中",
+      "taskName": "【PA】発注業務",
+      "assignee": "松下 恵子",
+      "bucket": "作成中",
+      "progress": "0/12",
+      "dueDate": "2026/06/12"
+    },
+    {
+      "id": "【PA】見積業務",
+      "status": "作成中",
+      "taskName": "【PA】見積業務",
+      "assignee": "三好 慶一;松島 早希",
+      "bucket": "レビュー中",
+      "progress": "7/12",
+      "dueDate": "2026/03/20"
+    },
+    {
+      "id": "【SC】検収業務",
+      "status": "作成中",
+      "taskName": "【SC】検収業務",
+      "assignee": "前田 竜平",
+      "bucket": "作成中",
+      "progress": "12/17",
+      "dueDate": "2026/05/08"
+    },
+    {
+      "id": "【SC】発注業務",
+      "status": "作成中",
+      "taskName": "【SC】発注業務",
+      "assignee": "前田 竜平",
+      "bucket": "作成中",
+      "progress": "3/11",
+      "dueDate": "2026/07/31"
+    },
+    {
+      "id": "【SG】MAPSロール・ID管理",
+      "status": "作成中",
+      "taskName": "【SG】MAPSロール・ID管理",
+      "assignee": "福重 直人;上延 美智子",
+      "bucket": "レビュー中",
+      "progress": "9/11",
+      "dueDate": "2026/03/20"
+    },
+    {
+      "id": "【SG】不適合処置",
+      "status": "作成中",
+      "taskName": "【SG】不適合処置",
+      "assignee": "三好 慶一;福重 直人",
+      "bucket": "作成中",
+      "progress": "0/11",
+      "dueDate": "2026/07/31"
+    },
+    {
+      "id": "【SG】仕入先管理_認定仕入先リスト",
+      "status": "作成中",
+      "taskName": "【SG】仕入先管理_認定仕入先リスト",
+      "assignee": "榊原 祐子;三好 慶一",
+      "bucket": "作成中",
+      "progress": "0/11",
+      "dueDate": "2026/06/30"
+    },
+    {
+      "id": "【SG】業務滞留管理",
+      "status": "作成中",
+      "taskName": "【SG】業務滞留管理",
+      "assignee": "福重 直人",
+      "bucket": "レビュー中",
+      "progress": "9/11",
+      "dueDate": "2026/03/10"
+    },
+    {
+      "id": "【WH】棚卸業務",
+      "status": "作成中",
+      "taskName": "【WH】棚卸業務",
+      "assignee": "榊原 祐子",
+      "bucket": "レビュー中",
+      "progress": "6/11",
+      "dueDate": "2026/03/20"
+    },
+    {
+      "id": "【PA】OH対応",
+      "status": "未着手",
+      "taskName": "【PA】OH対応",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2028/03/20"
+    },
+    {
+      "id": "【PA】借用処理",
+      "status": "未着手",
+      "taskName": "【PA】借用処理",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/06/30"
+    },
+    {
+      "id": "【PA】在庫引当",
+      "status": "未着手",
+      "taskName": "【PA】在庫引当",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2028/03/20"
+    },
+    {
+      "id": "【PA】在庫移動",
+      "status": "未着手",
+      "taskName": "【PA】在庫移動",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2028/03/20"
+    },
+    {
+      "id": "【PA】災害対策部品の運用",
+      "status": "未着手",
+      "taskName": "【PA】災害対策部品の運用",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2028/03/20"
+    },
+    {
+      "id": "【PA】補用部品管理",
+      "status": "未着手",
+      "taskName": "【PA】補用部品管理",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/06/30"
+    },
+    {
+      "id": "【PA】補用部品選定",
+      "status": "未着手",
+      "taskName": "【PA】補用部品選定",
+      "assignee": "松下 恵子",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/07/31"
+    },
+    {
+      "id": "【PA】部品売価計算",
+      "status": "未着手",
+      "taskName": "【PA】部品売価計算",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/09/30"
+    },
+    {
+      "id": "【PA】部品登録",
+      "status": "未着手",
+      "taskName": "【PA】部品登録",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/09/30"
+    },
+    {
+      "id": "【SC】OH輸送依頼対応",
+      "status": "未着手",
+      "taskName": "【SC】OH輸送依頼対応",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2028/03/20"
+    },
+    {
+      "id": "【SC】要求取消",
+      "status": "未着手",
+      "taskName": "【SC】要求取消",
+      "assignee": "榊原 祐子",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/07/10"
+    },
+    {
+      "id": "【SC】見積業務",
+      "status": "未着手",
+      "taskName": "【SC】見積業務",
+      "assignee": "松島 早希",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/07/31"
+    },
+    {
+      "id": "【SG】仕入先管理",
+      "status": "未着手",
+      "taskName": "【SG】仕入先管理",
+      "assignee": "松下 恵子;山田 豊;上延 美智子",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/12/20"
+    },
+    {
+      "id": "【SG】仕入先管理_KHI契約先以外の業者評価",
+      "status": "未着手",
+      "taskName": "【SG】仕入先管理_KHI契約先以外の業者評価",
+      "assignee": "福重 直人",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/12/20"
+    },
+    {
+      "id": "【SG】帳票保存・管理",
+      "status": "未着手",
+      "taskName": "【SG】帳票保存・管理",
+      "assignee": "松島 早希",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/03/19"
+    },
+    {
+      "id": "【SG】新規仕入先選定",
+      "status": "未着手",
+      "taskName": "【SG】新規仕入先選定",
+      "assignee": "福重 直人;上延 美智子",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/12/20"
+    },
+    {
+      "id": "【SG】月次集計（内容分解の必要あり）",
+      "status": "未着手",
+      "taskName": "【SG】月次集計（内容分解の必要あり）",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/06/30"
+    },
+    {
+      "id": "【WH】2BOX管理",
+      "status": "未着手",
+      "taskName": "【WH】2BOX管理",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/06/30"
+    },
+    {
+      "id": "【WH】KMS⇔NX連携業務",
+      "status": "未着手",
+      "taskName": "【WH】KMS⇔NX連携業務",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/06/30"
+    },
+    {
+      "id": "【WH】不適合事象への対応",
+      "status": "未着手",
+      "taskName": "【WH】不適合事象への対応",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/09/30"
+    },
+    {
+      "id": "【WH】借用・戻入業務",
+      "status": "未着手",
+      "taskName": "【WH】借用・戻入業務",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/09/30"
+    },
+    {
+      "id": "【WH】入庫業務",
+      "status": "未着手",
+      "taskName": "【WH】入庫業務",
+      "assignee": "榊原 祐子",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/12/18"
+    },
+    {
+      "id": "【WH】出荷業務",
+      "status": "未着手",
+      "taskName": "【WH】出荷業務",
+      "assignee": "榊原 祐子",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2027/03/19"
+    },
+    {
+      "id": "【WH】在庫移動処理",
+      "status": "未着手",
+      "taskName": "【WH】在庫移動処理",
+      "assignee": "",
+      "bucket": "未割り当て",
+      "progress": "0/11",
+      "dueDate": "2027/06/30"
+    },
+    {
+      "id": "【WH】在庫管理",
+      "status": "未着手",
+      "taskName": "【WH】在庫管理",
+      "assignee": "榊原 祐子;松島 早希;前田 竜平",
+      "bucket": "未着手",
+      "progress": "0/11",
+      "dueDate": "2026/12/20"
+    },
+    {
+      "id": "PSM-WH005",
+      "status": "完了",
+      "taskName": "PSM-WH005_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_在庫管理",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH010",
+      "status": "完了",
+      "taskName": "PSM-WH010_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_不適合事象への対応",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "PSM-WH011",
+      "status": "完了",
+      "taskName": "PSM-WH011_日本通運株式会社様向け 倉庫業務マニュアル【トライアル版】_評価とKPI管理",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "",
+      "dueDate": "2025/11/17"
+    },
+    {
+      "id": "【PA】在庫処分",
+      "status": "完了",
+      "taskName": "【PA】在庫処分",
+      "assignee": "武田 貴文;前田 竜平",
+      "bucket": "承認",
+      "progress": "13/13",
+      "dueDate": "2026/02/06"
+    },
+    {
+      "id": "【PA】検収業務",
+      "status": "完了",
+      "taskName": "【PA】検収業務",
+      "assignee": "松下 恵子",
+      "bucket": "承認",
+      "progress": "10/12",
+      "dueDate": "2026/01/20"
+    },
+    {
+      "id": "【PA】要求取消・戻入処理",
+      "status": "完了",
+      "taskName": "【PA】要求取消・戻入処理",
+      "assignee": "前田 竜平",
+      "bucket": "承認",
+      "progress": "14/14",
+      "dueDate": "2026/03/20"
+    }
+  ]
+}
