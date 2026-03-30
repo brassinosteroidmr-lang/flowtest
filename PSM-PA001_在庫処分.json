@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "在庫処分（PSM-PA001）",
+    "version": "1.0",
+    "lastUpdated": "2026-03-29"
+  },
+  "lanes": [
+    { "id": "sanpai", "label": "産廃業者", "color": "#B0C4DE", "width": 150 },
+    { "id": "jigyosho", "label": "事業所", "color": "#B2EBF2", "width": 140 },
+    { "id": "shizai", "label": "資材課", "color": "#E8F4FD", "width": 150 },
+    { "id": "kikaku", "label": "企画管理部", "color": "#FFF9C4", "width": 160 },
+    { "id": "souko", "label": "倉庫", "color": "#E8F5E9", "width": 130 }
+  ],
+  "groups": [
+    { "id": "selection", "label": "選定・調整" },
+    { "id": "approval", "label": "決裁" },
+    { "id": "disposal", "label": "廃却実施" }
+  ],
+  "nodes": [
+    {
+      "id": "n01", "label": "廃却部品選定", "lane": "shizai", "group": "selection",
+      "x": 0, "y": 40,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "MAPS",
+      "note": "MAPSデータ・月報・前年度データを統合し\nS143・S544基準に基づき廃却候補を抽出・リスト化"
+    },
+    {
+      "id": "n02", "label": "事業所確認", "lane": "jigyosho", "group": "selection",
+      "x": 0, "y": 80,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "",
+      "note": "各事業所へ候補リスト送付し需要ヒアリング\n異議がある場合は協議しリスト修正"
+    },
+    {
+      "id": "n03", "label": "年央報告", "lane": "kikaku", "group": "selection",
+      "x": 0, "y": 120,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "",
+      "note": "年央担当者へリスト送付\n企画管理部へ廃却予定金額を報告"
+    },
+    {
+      "id": "n04", "label": "決裁書作成", "lane": "shizai", "group": "approval",
+      "x": 0, "y": 220,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "MAPS",
+      "note": "9月データ確定後、中止品・破損品追加\n引当確認・修正し決裁書本文を作成"
+    },
+    {
+      "id": "n05", "label": "企画管理確認", "lane": "kikaku", "group": "approval",
+      "x": 0, "y": 260,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "",
+      "note": "主管部門にて内容確認\n指摘がある場合は協議し合意後に次工程へ"
+    },
+    {
+      "id": "n06", "label": "承認", "lane": "kikaku", "group": "approval",
+      "x": 0, "y": 300,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "",
+      "note": "決裁基準に従い申請・承認"
+    },
+    {
+      "id": "n07", "label": "産廃処理手配", "lane": "sanpai", "group": "disposal",
+      "x": 0, "y": 400,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "",
+      "note": "キズナックスマネジメントへ見積要求\n見積取得後に購買要求起票・発注"
+    },
+    {
+      "id": "n08", "label": "在庫移動処理", "lane": "shizai", "group": "disposal",
+      "x": 0, "y": 400,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "MAPS",
+      "note": "通常倉庫から廃棄倉庫へ在庫移動\n廃却ロケーション部品の引当・出荷指示"
+    },
+    {
+      "id": "n09", "label": "廃却手続き", "lane": "souko", "group": "disposal",
+      "x": 0, "y": 440,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "",
+      "note": "積込立会い・写真撮影\n廃却部品受領書回収・電子マニフェスト確認"
+    },
+    {
+      "id": "n10", "label": "廃却依頼書作成", "lane": "shizai", "group": "disposal",
+      "x": 0, "y": 480,
+      "manual": "PSM-PA001", "manualStatus": "完了", "system": "",
+      "note": "確定見積書取得・改訂発注\n企画管理部へ棚卸資産廃却依頼書提出\nSPOへ帳票保管"
+    }
+  ],
+  "edges": [
+    { "from": "n01", "to": "n02", "label": "候補リスト" },
+    { "from": "n02", "to": "n01", "label": "リスト修正" },
+    { "from": "n02", "to": "n03", "label": "合意" },
+    { "from": "n03", "to": "n04", "label": "" },
+    { "from": "n04", "to": "n05", "label": "" },
+    { "from": "n05", "to": "n04", "label": "指摘あり" },
+    { "from": "n05", "to": "n06", "label": "合意" },
+    { "from": "n06", "to": "n07", "label": "" },
+    { "from": "n06", "to": "n08", "label": "" },
+    { "from": "n07", "to": "n09", "label": "" },
+    { "from": "n08", "to": "n09", "label": "" },
+    { "from": "n09", "to": "n10", "label": "" }
+  ],
+  "manuals": [
+    { "id": "PSM-PA001", "status": "完了" }
+  ]
+}
