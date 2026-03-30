@@ -95,6 +95,14 @@
     {
       "id": "admin_monthly",
       "label": "管理・月次業務"
+    },
+    {
+      "id": "long_lead",
+      "label": "長納期部品運用"
+    },
+    {
+      "id": "disaster",
+      "label": "災害対策"
     }
   ],
   "nodes": [
@@ -673,6 +681,30 @@
       "manualStatus": "",
       "system": "",
       "note": "会計伝票のファイル管理"
+    },
+    {
+      "id": "n170",
+      "label": "長納期部品管理",
+      "lane": "shizai",
+      "group": "long_lead",
+      "x": 0,
+      "y": 2380,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "長納期部品の納期フォロー・督促\n進捗管理・サービス本部との調整\nS142F補用部品補給基準に基づく"
+    },
+    {
+      "id": "n171",
+      "label": "災害対策部品運用",
+      "lane": "shizai",
+      "group": "disaster",
+      "x": 0,
+      "y": 2500,
+      "manual": "",
+      "manualStatus": "",
+      "system": "MAPS",
+      "note": "災害対策部品の選定・在庫維持\n保管場所管理\nS140Q基準に基づく"
     },
     {
       "id": "n45",
