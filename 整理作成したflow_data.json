@@ -567,16 +567,76 @@
       "note": ""
     },
     {
-      "id": "n44",
-      "label": "LTSA",
+      "id": "n161",
+      "label": "審査・計画表作成",
       "lane": "shizai",
       "group": "work_oh",
       "x": 0,
-      "y": 1970.843670084237,
+      "y": 2020,
       "manual": "",
       "manualStatus": "",
       "system": "GRANDIT",
-      "note": "審査・支払計画表作成\n決裁・KHI契約書作成・締結\nGRANDIT請求内容確認・支払申請\n会計伝票ファイル管理"
+      "note": "LTSAの内容を審査し\n支払計画表を作成する"
+    },
+    {
+      "id": "n162",
+      "label": "決裁",
+      "lane": "kikaku",
+      "group": "work_oh",
+      "x": 0,
+      "y": 2060,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "社内決裁（企画管理部承認）"
+    },
+    {
+      "id": "n163",
+      "label": "KHI契約書作成",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 0,
+      "y": 2100,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "KHI契約書を作成・締結"
+    },
+    {
+      "id": "n164",
+      "label": "KHI契約対応",
+      "lane": "supplier",
+      "group": "work_oh",
+      "x": 0,
+      "y": 2100,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "KHI側の契約締結対応"
+    },
+    {
+      "id": "n165",
+      "label": "請求確認・支払申請",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 0,
+      "y": 2140,
+      "manual": "",
+      "manualStatus": "",
+      "system": "GRANDIT",
+      "note": "GRANDITで請求内容を確認し\n支払申請を実施"
+    },
+    {
+      "id": "n166",
+      "label": "会計伝票管理",
+      "lane": "shizai",
+      "group": "work_oh",
+      "x": 0,
+      "y": 2180,
+      "manual": "",
+      "manualStatus": "",
+      "system": "",
+      "note": "会計伝票のファイル管理"
     },
     {
       "id": "n45",
@@ -1642,6 +1702,31 @@
     {
       "from": "n160",
       "to": "n159",
+      "label": ""
+    },
+    {
+      "from": "n161",
+      "to": "n162",
+      "label": ""
+    },
+    {
+      "from": "n162",
+      "to": "n163",
+      "label": ""
+    },
+    {
+      "from": "n163",
+      "to": "n164",
+      "label": "契約書"
+    },
+    {
+      "from": "n164",
+      "to": "n165",
+      "label": ""
+    },
+    {
+      "from": "n165",
+      "to": "n166",
       "label": ""
     }
   ],
